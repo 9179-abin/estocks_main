@@ -1,0 +1,45 @@
+server:
+  port: 5000
+
+spring:
+  application:
+    name: estocks-cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      globalcors:
+        addToSimpleUrlHandlerMapping: true
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedMethods: 
+            - GET
+            - POST
+            - PUT
+            - DELETE
+#      routes:
+#      - id: estocksCommandModule
+#        uri: http://localhost:5100/
+#        predicates:
+#        - Path=/estocks/command/**
+#      - id: estocksStocksModule
+#        uri: http://localhost:5200/
+#        predicates:
+#        - Path=/estocks/query/**
+#      default-filters:
+#      - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin, RETAIN_UNIQUE
+    
+eureka:
+  instance:
+    hostname: localhost
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: "http://estocks-eureka-server:8761/eureka"
+#  instance:
+#    preferIpAddress: true
+    
+jwt:
+  secret: A4FA3FB796A06059E5B0478E82A5685144D4BC80F4412D3891D33619E05A8839
